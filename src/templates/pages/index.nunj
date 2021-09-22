@@ -1,0 +1,200 @@
+{% extends "../ext/base.nunj" %}
+
+{% from "../../components/menu/menu.nunj" import menu %}
+{% from "../../components/title/title.nunj" import title %}
+{% from "../../components/rowInput/rowInput.nunj" import rowInput %}
+{% from "../../components/checkbox/checkbox.nunj" import checkbox %}
+{% from "../../components/button/button.nunj" import button %}
+{% from "../../components/icon/icon.nunj" import icon %}
+
+{# Пример расширения существующего блока #}
+{# Например можно использовать для добавления уникальных тайтлов для каждой страницы #}
+{# {% block title %}Home / {{ super() }}{% endblock title %} #}
+    {% block content %}
+    {% include '../../components/header/header.nunj' %}
+
+    <div class="main">
+      <div class="container-fluid">
+
+            <div class="row order">
+
+                <div class="order__left">
+
+                    <ul class="order__header">
+                        <li class="done">Account</li>
+                        <li class="done">Shipping</li>
+                        <li class="current">Billing</li>
+                        <li>Review</li>
+                    </ul>
+
+                    <div class="order__main">
+                        {{ title({
+                            htmltag: 'h1',
+                            children: 'Billing information'
+                        }) }}
+
+                        <div class="billing-type">
+                            <div class="i-radio">
+                                <input type="radio" class="i-radio__input" name="radio" id="r1" checked>
+                                <label for="r1" class="i-radio__label">Pay with Credit Card</label>
+                            </div>
+                            <div class="i-radio">
+                                <input type="radio" class="i-radio__input" name="radio" id="r2">
+                                <label for="r2" class="i-radio__label">
+                                    <img src={% inline 'paypal.png' %} alt="PayPal"/>
+                                </label>
+                            </div>
+                        </div>
+
+                        <form action="">
+                            <div class="payment-card">
+
+                                {{ rowInput({
+                                    label: 'Name on card',
+                                    id: 'id1',
+									                  type: 'text',
+                                    placeholder: 'Placeholder Text'
+								                }) }}
+
+                                <div class="payment-card__row">
+                                    <label for="" class="payment-card__label">Card number</label>
+                                    <div class="payment-card__row_card-number">
+                                        <input type="text" class="i-text payment-card__input payment-card__input_sm">
+                                        <input type="text" class="i-text payment-card__input payment-card__input_sm">
+                                        <input type="text" class="i-text payment-card__input payment-card__input_sm">
+                                        <input type="text" class="i-text payment-card__input payment-card__input_sm">
+                                    </div>
+                                </div>
+
+                                {{ rowInput({
+									                  classNames: 'payment-card__row_sm',
+                                    label: 'Expire date',
+                                    id: 'id2',
+									                  type: 'number',
+                                    inputClassNames: 'payment-card__input payment-card__input_sm'
+								                }) }}
+
+                                {{ rowInput({
+									                  classNames: 'payment-card__row_sm',
+                                    label: 'CVV code <span class="payment-card__info-toggle"> <span class="payment-card__info">Info text text text some text some text</span></span>',
+                                    id: 'id3',
+									                  type: 'number',
+                                    inputClassNames: 'payment-card__input payment-card__cvv-input payment-card__input_sm'
+								                }) }}
+
+                            </div>
+
+                            <div class="agreements">
+
+                                {{ checkbox({
+									                  name: 'checkbox1',
+                                    id: 'c1',
+									                  children: 'Save information of this credit card</a>',
+                                    checked: 'checked'
+								                }) }}
+
+                                {{ checkbox({
+									                  name: 'checkbox2',
+                                    id: 'c2',
+									                  children: 'I accept the <a href="#">terms and comditions</a> and the <a href="#">Privacy Policies</a>'
+								                }) }}
+
+                            </div>
+
+                            <div class="order__footer">
+
+                                <button class="order__back">Back</button>
+                                {{ button({
+									                  className: 'order__pay-btn',
+									                  children: 'Check Out'
+								                }) }}
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="order__right">
+                    <div class="basket">
+
+                        {{ title({
+                            htmltag: 'h2',
+                            children: 'My basket'
+                        }) }}
+
+                        <div class="basket__item">
+                            <div class="basket__image">
+                                <img src={% inline 'product1.png' %} alt="Some image"/>
+                            </div>
+                            <div class="basket__info">
+                                <p class="basket__capt">
+                                    Amet minim mollit non deserunt ullamco est sitii
+                                </p>
+                                <div class="product-counter">
+                                    <span class="product-counter__minus" onclick="decreaseCountBasketItem(this)"></span>
+                                    <input type="text" id="product1-count" class="product-counter__input" value="1" onchange="changeCountBasketItem(this)">
+                                    <span class="product-counter__plus" onclick="increaseCountBasketItem(this)"></span>
+                                </div>
+                                <p class="basket__price" id="product1-price" data-price="525">$ 525</p>
+                            </div>
+                            <button class="basket__remove" onclick="removebasketItem(this)"></button>
+                        </div>
+
+                        <div class="basket__item">
+                            <div class="basket__image">
+                                <img src={% inline 'product2.png' %} alt="Some image"/>
+                            </div>
+                            <div class="basket__info">
+                                <p class="basket__capt">
+                                    Amet minim mollit non
+                                </p>
+                                <div class="product-counter">
+                                  <span class="product-counter__minus" onclick="decreaseCountBasketItem(this)"></span>
+                                  <input type="text" id="product2-count" class="product-counter__input" value="1" onchange="changeCountBasketItem(this)">
+                                  <span class="product-counter__plus" onclick="increaseCountBasketItem(this)"></span>
+                                </div>
+                                <p class="basket__price" id="product2-price" data-price="525">$ <span>525</span></p>
+                            </div>
+                            <button class="basket__remove" onclick="removebasketItem(this)"></button>
+                        </div>
+
+                    </div>
+                    <div class="promocode">
+
+                        {{ title({
+                            htmltag: 'h2',
+                            children: 'Promo code'
+                        }) }}
+
+                        <form action="" class="promocode__form">
+                            <input type="text" class="i-text promocode__input" placeholder="Placeholder Text">
+                            {{ button({
+								                className: 'promocode__btn',
+								                children: 'Apply'
+							              }) }}
+                        </form>
+
+                    </div>
+                    <div class="order__totals">
+                        <p>
+                            <span>Subtotal</span>
+                            <span id="basketSubTotal">$1 050</span>
+                        </p>
+                        <p>
+                            <span>Tax</span>
+                            <span id="basketTax" data-price="100">$100</span>
+                        </p>
+                        <p>
+                            <span>Shipping</span>
+                            <span id="basketShipping" data-price="150">$150</span>
+                        </p>
+                        <p class="order__total">
+                            <span>Total</span>
+                            <span id="basketTotal">$1 300</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+$default-transition-duration: 0.2s;
+$default-transition-function: linear;
+
+$color-lightgray: #cfcfcf;
+$color-blue: #3366ff;
+$color-white: #fff;
+$color-black: #000;
+$color-whitegray: #d5d5d5;
+
+@mixin flex($property) {
+  flex: 0 0 auto;
+  width: $property;
+}
+
+@mixin wh($w, $h) {
+  width: $w;
+  height: $h;
+}
+
+@mixin bg-image($image, $size) {
+  background-color: transparent;
+  background-image: $image;
+  background-size: $size;
+}

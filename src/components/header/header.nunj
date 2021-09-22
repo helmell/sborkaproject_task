@@ -1,0 +1,49 @@
+{# <div class="header">
+	<div class="container">
+		{{ menu() }}
+	</div>
+</div> #}
+
+
+<header class="header">
+  <div class="header__inner">
+
+    <div class="header__logo">
+      <a href=""><img src={% inline 'logo.svg' %} alt="Logo" /></a>
+    </div>
+
+    <nav class="header__center">
+      <ul class="header__ul">
+				{{ menu() }}
+      </ul>
+    </nav>
+
+    <div class="header__right">
+      <a href="" class="header__search-btn">
+
+				{{ icon({
+          iconName: 'search',
+          className: 'header__search-icon'
+        }) }}
+
+			</a>
+      <a href="" class="header__cart-btn">
+
+				{{ icon({
+          iconName: 'cart',
+          className: 'header__cart-icon'
+        }) }}
+
+				<span class="header__cart-info" id="header__cart-info">2</span>
+			</a>
+			<a href="" class="header__mob-menu-toggle">
+
+				{{ icon({
+          iconName: 'mob-menu',
+          className: 'header__mob-menu-icon'
+        }) }}
+
+			</a>
+    </div>
+  </div>
+</header>

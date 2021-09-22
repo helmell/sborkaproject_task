@@ -1,0 +1,153 @@
+.i-text {
+	display: block;
+	width: 100%;
+	/* Turn off iPhone/Safari input element rounding: */
+	-webkit-appearance: none;
+	border: none;
+	border-radius: 3px;
+	padding: 14px 10px 11px;
+	background-color: #ededf1;
+	height: 40px;
+
+	&::placeholder {
+		font-size: 14px;
+		line-height: 110%;
+		font-style: inherit;
+	}
+}
+
+.i-select {
+	display: block;
+	width: 100%;
+	padding: 5px;
+}
+
+.i-textarea {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	padding: 5px;
+	/* Remove scrollbar in IE */
+	overflow: auto;
+}
+
+.i-radio {
+	position: relative;
+	display: inline-block;
+	margin-right: 80px;
+
+	&__input {
+		display: none;
+	}
+
+	&__label {
+		position: relative;
+		padding-left: 27px;
+		cursor: pointer;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: -2px;
+			left: 0;
+			display: block;
+			@include wh(18px, 18px);
+			border: 1px solid $color-lightgray;
+			border-radius: 50%;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 8px;
+			left: 10px;
+			display: block;
+			@include wh(0px, 0px);
+			border-radius: 50%;
+			transition: $default-transition-function $default-transition-duration;
+		}
+
+		&:hover::after {
+			top: 4px;
+			left: 6px;
+			@include wh(8px, 8px);
+			background-color: $color-lightgray;
+		}
+
+		img {
+			width: 85px;
+		}
+	}
+	&__input:checked + label::after {
+		top: 4px;
+		left: 6px;
+		@include wh(8px, 8px);
+		background-color: $color-blue;
+	}
+}
+
+.i-checkbox {
+	position: relative;
+	margin-bottom: 12px;
+
+	&__input {
+		display: none;
+	}
+
+	&__label {
+		position: relative;
+		padding-left: 27px;
+		cursor: pointer;
+		color: #8c8c8c;
+
+		a {
+			color: $color-black;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: -2px;
+			left: 0;
+			display: block;
+			@include wh(18px, 18px);
+			border: 1px solid $color-lightgray;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 8px;
+			left: 10px;
+			display: block;
+			@include wh(0px, 0px);
+			transition: $default-transition-function $default-transition-duration;
+		}
+
+		&:hover::after {
+			top: 4px;
+			left: 6px;
+			@include wh(8px, 8px);
+			background-color: $color-lightgray;
+		}
+
+		img {
+			width: 85px;
+		}
+	}
+
+	&__input:checked + label::after {
+		content: "";
+		position: absolute;
+		top: 4px;
+		left: 6px;
+		display: block;
+		@include wh(8px, 8px);
+		background-color: $color-blue;
+	}
+}

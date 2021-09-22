@@ -1,0 +1,337 @@
+.order {
+    &__left {
+        @include flex(calc(100% - 410px));
+        padding: 50px 65px;
+
+        @media (max-width: 1040px) {
+            @include flex(100%);
+        }
+    }
+
+    &__header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        counter-reset: section;
+
+        li {
+            position: relative;
+            display: inline-block;
+
+            &::before {
+                content: "";
+                display: flex;
+                counter-increment: section;
+                content: counters(section, ".") " ";
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto 10px;
+                @include wh(19px, 19px);
+                padding-right: 1px;
+                border: 1px solid $color-whitegray;
+                border-radius: 50%;
+                font-size: 10px;
+                color: $color-whitegray;
+                box-sizing: border-box;
+                background-color: $color-white;
+            }
+
+            &.done::before {
+                border: 1px solid $color-blue;
+                background-color: $color-blue;
+                color: $color-white;
+            }
+
+            &.current::before {
+                border: 1px solid $color-blue;
+                background-color: $color-white;
+                color: $color-black;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: 20px;
+            display: block;
+            @include wh(calc(100% - 40px), 1px);
+            background-color: $color-whitegray;
+        }
+
+        &_3step::before {
+            background-color: linear-gradient(to right, $color-blue 67%, $color-whitegray 67%);
+        }
+    }
+
+    &__main {
+        margin-top: 60px;
+
+        @media (min-width: 1300px) {
+            padding-left: 187px;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        max-width: 625px;
+    }
+
+    &__back {
+        padding: 11px 30px 12px;
+        border: 1px solid $color-lightgray;
+        border-radius: 3px;
+        background-color: $color-white;
+        color: $color-black;
+        transition: $default-transition-function $default-transition-duration;
+
+        &:hover {
+            border: 1px solid $color-blue;
+            background-color: $color-white;
+            color: $color-blue;
+        }
+    }
+
+    &__right {
+        @include flex(410px);
+        min-height: 100vh;
+        border-left: 1px solid $color-lightgray;
+
+        @media (min-width: 1640px) {
+            border-right: 1px solid $color-lightgray;
+        }
+
+        @media (max-width: 1040px) {
+            display: none;
+        }
+    }
+
+    &__totals {
+        padding: 40px;
+
+        p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__total {
+        font-weight: bold;
+        font-size: 18px;
+    }
+}
+
+.payment-card {
+    position: relative;
+    left: -30px;
+    margin: 40px 0;
+    border: 1px solid $color-lightgray;
+    border-radius: 5px;
+    box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.19);
+    width: 550px;
+    padding: 25px 29px 20px;
+
+    &__row {
+        margin-bottom: 25px;
+    }
+
+    &__row_sm {
+        display: inline-block;
+        margin-right: 26px;
+    }
+
+    &__row_card-number {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #555770;
+    }
+
+    &__info {
+        position: absolute;
+        top: 19px;
+        left: 0;
+        padding: 5px;
+        border: 1px solid $color-lightgray;
+        border-radius: 3px;
+        background-color: $color-white;
+        width: 140px;
+        font-size: 12px;
+        font-weight: 400;
+        visibility: hidden;
+        transition: $default-transition-function $default-transition-duration;
+        opacity: 0;
+    }
+
+    &__info-toggle {
+        position: relative;
+        display: inline-block;
+
+        &::before {
+            content: "?";
+            position: relative;
+            top: -1px;
+            display: inline-block;
+            margin-left: 3px;
+            @include wh(14px, 14px);
+            padding: 0px 4px;
+            border-radius: 50%;
+            font-size: 10px;
+            color: $color-black;
+            background-color: #dbdbdb;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        &:hover .payment-card__info {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    &__input {
+        display: inline-block;
+        width: 100px;
+        margin-right: 26px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__cvv-input {
+        margin-left: 1px;
+    }
+}
+
+.agreements {
+    margin-bottom: 35px;
+}
+
+.basket {
+    border-bottom: 1px solid $color-lightgray;
+    padding: 40px 40px 0;
+
+    &__item {
+        display: flex;
+        margin-bottom: 40px;
+    }
+
+    &__image {
+        @include flex(90px);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__info {
+        @include flex(calc(100% - 170px));
+        margin-left: 15px;
+        margin-right: 45px;
+    }
+
+    &__capt {
+        margin-bottom: 15px;
+    }
+
+    &__price {
+        display: inline-block;
+        vertical-align: top;
+        margin: 2px 0 0 20px;
+    }
+
+    &__remove {
+        @include flex(18px);
+        height: 19px;
+        border: none;
+        @include bg-image(inline('close.svg'), cover);
+        cursor: pointer;
+        transition: $default-transition-function $default-transition-duration;
+
+        &:hover {
+            filter: brightness(0.1);
+        }
+    }
+}
+
+.product-counter {
+    display: inline-block;
+
+    &__minus {
+        display: inline-block;
+        @include wh(20px, 19px);
+        @include bg-image(inline("basket-minus.svg"), 100% 100%);
+        cursor: pointer;
+        transition: $default-transition-function $default-transition-duration;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    &__input {
+        margin-left: 4px;
+        margin-right: 4px;
+        border: none;
+        width: 30px;
+        vertical-align: super;
+        text-align: center;
+        &:disabled {
+          background-color: transparent;
+          color: inherit;
+        }
+    }
+
+    &__plus {
+        display: inline-block;
+        @include wh(20px, 19px);
+        @include bg-image(inline("basket-plus.svg"), 100% 100%);
+        cursor: pointer;
+        transition: $default-transition-function $default-transition-duration;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+.promocode {
+    border-bottom: 1px solid $color-lightgray;
+    padding: 40px;
+
+    &__input {
+        display: inline-block;
+        width: 215px;
+        margin-right: 10px;
+    }
+
+    &__btn {
+        vertical-align: top;
+    }
+}
+
+#icon- {
+    &cart {
+        @include wh(26px, 23px);
+    }
+
+    &search {
+        @include wh(24px, 23px);
+    }
+
+    &mob-menu {
+        @include wh(30px, 23px);
+    }
+
+    &basket-close {
+        @include wh(18px, 18px);
+    }
+}

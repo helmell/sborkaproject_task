@@ -1,0 +1,3 @@
+{% macro title(props) %}
+<{{ props.htmltag }} class="page-h">{{ props.children }}</{{ props.htmltag }}>
+{% endmacro %}
