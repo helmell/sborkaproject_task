@@ -28,6 +28,10 @@
                     </ul>
 
                     <div class="order__main">
+                        {{ title({
+                            htmltag: 'h1',
+                            children: 'Billing information'
+                        }) }}
 
                         <div class="billing-type">
                             <div class="i-radio">
