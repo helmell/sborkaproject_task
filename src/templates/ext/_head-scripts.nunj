@@ -139,7 +139,6 @@
 		function changeCountBasketItem(element) {
 			var count = element.value;
 			recountItem(element, count);
-			console.log(element, count);
 		}
 
 	</script>

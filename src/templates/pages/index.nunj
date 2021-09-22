@@ -28,10 +28,6 @@
                     </ul>
 
                     <div class="order__main">
-                        {{ title({
-                            htmltag: 'h1',
-                            children: 'Billing information'
-                        }) }}
 
                         <div class="billing-type">
                             <div class="i-radio">
@@ -131,9 +127,9 @@
                                     Amet minim mollit non deserunt ullamco est sitii
                                 </p>
                                 <div class="product-counter">
-                                    <span class="product-counter__minus" onclick="decreaseCountBasketItem(this)"></span>
+                                    <span class="product-counter__decrease" onclick="decreaseCountBasketItem(this)"></span>
                                     <input type="text" id="product1-count" class="product-counter__input" value="1" onchange="changeCountBasketItem(this)">
-                                    <span class="product-counter__plus" onclick="increaseCountBasketItem(this)"></span>
+                                    <span class="product-counter__increase" onclick="increaseCountBasketItem(this)"></span>
                                 </div>
                                 <p class="basket__price" id="product1-price" data-price="525">$ 525</p>
                             </div>
@@ -149,9 +145,9 @@
                                     Amet minim mollit non
                                 </p>
                                 <div class="product-counter">
-                                  <span class="product-counter__minus" onclick="decreaseCountBasketItem(this)"></span>
+                                  <span class="product-counter__decrease" onclick="decreaseCountBasketItem(this)"></span>
                                   <input type="text" id="product2-count" class="product-counter__input" value="1" onchange="changeCountBasketItem(this)">
-                                  <span class="product-counter__plus" onclick="increaseCountBasketItem(this)"></span>
+                                  <span class="product-counter__increase" onclick="increaseCountBasketItem(this)"></span>
                                 </div>
                                 <p class="basket__price" id="product2-price" data-price="525">$ <span>525</span></p>
                             </div>

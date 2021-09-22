@@ -1,6 +1,6 @@
 {% macro rowInput(props) %}
 <div class="payment-card__row {% if props.classNames %} {{ props.classNames }} {% endif %}">
     {% if props.label %} <label for="{{ props.id }}" class="payment-card__label">{{ props.label }}</label>{% endif %}
-    <input type="{{ props.type }}" id="{{ props.id }}" class="i-text {% if props.inputClassNames %} {{ props.inputClassNames }} {% endif %}" placeholder="{% if props.placeholder %} {{ props.placeholder }} {% endif %}">
+    <input type="{{ props.type }}" id="{{ props.id }}" class="i-text {% if props.inputClassNames %} {{ props.inputClassNames }} {% endif %}" placeholder="{% if props.placeholder %}{{ props.placeholder }}{% endif %}">
 </div>
 {% endmacro %}

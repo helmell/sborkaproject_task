@@ -252,7 +252,7 @@
         @include flex(18px);
         height: 19px;
         border: none;
-        @include bg-image(inline('close.svg'), cover);
+        @include bg-image(inline('close.svg'), 100% 100%);
         cursor: pointer;
         transition: $default-transition-function $default-transition-duration;
 
@@ -265,7 +265,7 @@
 .product-counter {
     display: inline-block;
 
-    &__minus {
+    &__decrease {
         display: inline-block;
         @include wh(20px, 19px);
         @include bg-image(inline("basket-minus.svg"), 100% 100%);
@@ -290,7 +290,7 @@
         }
     }
 
-    &__plus {
+    &__increase {
         display: inline-block;
         @include wh(20px, 19px);
         @include bg-image(inline("basket-plus.svg"), 100% 100%);

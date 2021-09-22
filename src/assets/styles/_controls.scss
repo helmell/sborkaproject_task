@@ -8,10 +8,11 @@
 	padding: 14px 10px 11px;
 	background-color: #ededf1;
 	height: 40px;
+	line-height: 110%;
 
 	&::placeholder {
-		font-size: 14px;
-		line-height: 110%;
+		font-size: inherit;
+		line-height: inherit;
 		font-style: inherit;
 	}
 }
